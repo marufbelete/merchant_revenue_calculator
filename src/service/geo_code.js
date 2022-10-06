@@ -10,8 +10,20 @@ const options = {
 };
 const geocoder = NodeGeocoder(options);
 const GeoCoder=async(name)=>{
-    const res = await geocoder.geocode(name);
-    return res
+  const res=await axios({
+    method: 'get',
+    url: 'http://nominatim.openstreetmap.org/search',
+    params: {
+        format: 'json',
+        q:name,
+        origin: '*',
+        addressdetails:1,
+        extratags:1,
+        "accept-language":"en"
+    }})
+    // const res = await geocoder.geocode(name);
+    console.log(res.data)
+    return res.data
  }
  const GeoDeCoder=async(coordinate)=>{
     // const res=await axios.get(`http://nominatim.openstreetmap.org/reverse?lat=${coordinate.lat}&lon=${coordinate.lon}&addressdetails=1&extratags=1&format=json`)

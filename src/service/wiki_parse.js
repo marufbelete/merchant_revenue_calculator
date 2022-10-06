@@ -20,6 +20,17 @@ const axios=require("axios")
         return info.data
     }
 
+    const ParseInfo=(data)=>{
+        const {suburb,county,state_district,state,country}=data
+        let wikifilter
+        if(suburb){wikifilter=suburb}
+        else if(county){wikifilter=county}
+        else if(state_district){wikifilter=state_district}
+        else if(state){wikifilter=state}
+        else{wikifilter=country}
+       return wikifilter
+    }
 module.exports={
-    GetDetailInfo
+    GetDetailInfo,
+    ParseInfo
 }
