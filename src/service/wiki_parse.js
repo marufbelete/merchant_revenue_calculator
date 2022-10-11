@@ -1,6 +1,5 @@
 const {axios_instance}=require('./wiki_base_url')
 const axios=require("axios")
-
     const GetDetailInfo=async(place)=>{
         // const info=await axios.get("https://en.wikipedia.org/w/api.php?format=jsonp&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=florida&origin=*")
         // const info=await axios_instance.get()
@@ -21,7 +20,7 @@ const axios=require("axios")
     }
 
     const ParseInfo=(data)=>{
-        const {suburb,county,state_district,state,country}=data
+        const {formatedAddress,suburb,county,state_district,state,country}=data
         let wikifilter
         if(suburb){wikifilter=suburb}
         else if(county){wikifilter=county}

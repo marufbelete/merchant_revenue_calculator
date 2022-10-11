@@ -4,25 +4,18 @@ chai.use(chaiHttp)
 chai.should();
 chai.expect;
 const server=require('../src/app')
-const testMovie = {
-    title: "Kill All",
-    slug: "slug",
-    duration:"12",
-    release_date:"7/20/2022",
-    thumbnail:"check",
-    status:"released",
-    like:"100",
-    dislike:"20",
-    views:"2000"
+const testLocation = {
+   lat:12,
+   lon:38
   };
   
 //   let tempToken;
 
-describe("POST movies", () => {
-    it("should add new movie", (done) => {
+describe("GET Location Desc", () => {
+    it("should return location detail", (done) => {
       chai.request(server)
-        .post("/createmovie")
-        .send(testMovie)
+        .post("/getlocationbycoordinate")
+        .send(testLocation)
         .end((err,res)=>{
             res.should.have.status(201)
             res.body.should.be.a("object")
@@ -57,15 +50,10 @@ describe("POST movies", () => {
     });
   });
 
-  describe("GET Movies",()=>{
-    it("should return all movies", (done) => {
-        chai.request(server)
-          .get("/getmovie")
-          .end((err,res)=>{
-              res.body.should.be.a('array')
-              // res.body.should.be.be('')
-              done()
-          })
-      });
+  // describe("GET Location Name",()=>{
+  //   it("should return all , (done)") => {
+       
+        
+  //     }
   
-  })
+  // })

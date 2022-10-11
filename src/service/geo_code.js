@@ -1,5 +1,6 @@
 const NodeGeocoder = require('node-geocoder');
 const axios=require("axios")
+const url_one="https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=10000&gscoord=31.039918%7C30.467019"
 
 const options = {
   provider: 'openstreetmap',
@@ -9,6 +10,8 @@ const options = {
   formatter: null // 'gpx', 'string', ...
 };
 const geocoder = NodeGeocoder(options);
+// const dis=compare_location_distance({lat:lat1,lon:lon1}, {lat:lat2,lon:lon2});
+
 const GeoCoder=async(name)=>{
   const res=await axios({
     method: 'get',
@@ -31,16 +34,33 @@ const GeoCoder=async(name)=>{
       method: 'get',
       url: 'http://nominatim.openstreetmap.org/reverse',
       params: {
-          format: 'json',
+          format: 'jsonv2',
           lat:coordinate.lat,
           lon:coordinate.lon,        
           origin: '*',
           addressdetails:1,
           extratags:1,
+          zoom:14,
           "accept-language":"en"
       }})
-    // const res = await geocoder.reverse(coordinate);
-    return res.data
+      const resultData=res.data
+      console.log(resultData)
+      console.log(resultData)
+      const {address}=resultData
+      address.lat=resultData.lat
+      address.lon=resultData.lon
+      address.formatedAddress=resultData.display_name
+  //   const res = await geocoder.reverse({
+  //     format: 'json',
+  //     lat:coordinate.lat,
+  //     lon:coordinate.lon,        
+  //     origin: '*',
+  //     extratags:1,
+  //     zoom:14,
+  //     "accept-language":"en"
+  // });
+  console.log(address)
+    return address
  }
 // Using callback
 module.exports={
