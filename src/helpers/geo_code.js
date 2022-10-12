@@ -1,11 +1,11 @@
 
-const compare_location_distance=(currentLocation,givenLocation)=>{
+const compare_location_distance=(currentLocation,foundLocation)=>{
 
 let lon_c =  currentLocation.lon * Math.PI / 180;
 let lat_c = currentLocation.lat * Math.PI / 180;
 
-let lon_g = givenLocation.lon * Math.PI / 180;
-let lat_g = givenLocation.lat * Math.PI / 180;
+let lon_g = foundLocation.lon * Math.PI / 180;
+let lat_g = foundLocation.lat * Math.PI / 180;
 
 // Haversine formula
 let dlon = lon_c - lon_g;

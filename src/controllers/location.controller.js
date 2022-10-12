@@ -2,6 +2,7 @@ const {GetWikiLocation}=require("../service/wiki_location")
 const {GeoCoder,GeoDeCoder}=require("../service/geo_code")
 const {GetDetailInfo,ParseInfo}=require("../service/wiki_parse")
 const {createBlock}=require("../service/create_block")
+const { compare_location_distance } = require("../helpers/geo_code")
 
 exports.getLocationByCoordinate=async (req, res, next) => {
   try {
@@ -15,7 +16,24 @@ exports.getLocationByCoordinate=async (req, res, next) => {
         }
     const nom_location=await GeoDeCoder(coordinate)
     const filter=ParseInfo(nom_location)
-    const block=await GetDetailInfo(filter)
+    let block=await GetDetailInfo(filter[0])
+    filter.splice(0,1)
+    let search_block=true
+    let i=1;
+    while(filter.length&&search_block)
+    {
+      const key=Object.keys(block?.query?.pages)
+      const desc=block?.query?.pages[key[0]]
+
+      if(desc?.extract?.length>40){search_block=false}
+      else{
+         block=await GetDetailInfo(filter[0])
+         filter.splice(0,1)
+         i=i+1
+      }
+    }
+    const dist=compare_location_distance({lat:nom_location.lat,lon:nom_location.lon},{lat:coordinate.lat,lon:coordinate.lon})
+    nom_location.dist=Number(dist)*1000
     const result= createBlock(block,nom_location)
     return res.json(result)
 
