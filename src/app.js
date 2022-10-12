@@ -1,7 +1,7 @@
 const express = require("express");
 require('dotenv').config()
 const app = express();
-const location_test = require('./routes/location_test.route');
+const location_test = require('./routes/calculate.route');
 
 const cors = require('cors');
   app.use(cors({

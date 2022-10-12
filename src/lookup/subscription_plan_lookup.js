@@ -1,0 +1,78 @@
+const SUBSCRPTIONMODEL={
+    ETSY:{
+        PLATFORM:"etsy",
+    },
+    SHOPIFY:{
+    PLATFORM:"shopify",
+    SUBSCRIPTION:{
+        BASIC:"basic",
+        PLUS:"plus",
+        ADVANCED:"advanced"
+    }
+},
+    WOOCOMMERCE:{
+        PLATFORM:"woocommerce"
+    },
+    BIGCOMMERCE:{
+        PLATFORM:"bigcommerce",
+        SUBSCRIPTION:{
+        STANDARD:"standard",
+        PLUSAMOUNT:"plus",
+        PROAMOUNT:"pro",
+        ENTERPRISEAMOUNT:"erprise"
+    }
+},
+
+    SQUARESPACE:{
+        PLATFORM:"squarespace",
+        SUBSCRIPTION:{
+        BUSINESS:"business",
+        BASIC:"basic",
+        ADVANCED:"advanced"
+        }
+    },
+    PRESTASHOP:{
+        PLATFORM:"prestashop"
+    },
+    FASTSPRING:{
+        PLATFORM:"fastspring",
+        SUBSCRIPTION:{
+        OPTION1:"option1",
+        OPTION2:"option2"
+        }
+    },
+    BIGCARTEL:{
+        PLATFORM:"bigcartel",
+        SUBSCRIPTION:{
+        STRIP:"stripe",
+        PAYPAL:"paypal"
+        } 
+    },
+    WIX:{
+        PLATFORM:"wix",
+        SUBSCRIPTION:{
+        USA:"usa",
+        CANADA:"canada",
+        EUROPE:"europe",
+        UK:"uk",
+        }
+    },
+    VOLUSION:{
+        PLATFORM:"volusion",
+        SUBSCRIPTION:{
+        PERSONAL:"personal",
+        PROFESSIONAL:"professional",
+        BUSINESS:"business"
+        }
+    },
+    WEEBLY:{
+        PLATFORM:"weebly"
+    },
+    EBAY:{
+        PLATFORM:"ebay"
+    }
+}
+
+module.exports={
+    SUBSCRPTIONMODEL
+}
