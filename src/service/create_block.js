@@ -3,6 +3,19 @@ const createBlock=(data,result)=>{
     const key=Object.keys(data?.query?.pages)
     const desc=data?.query?.pages[key[0]]
     let blocks=[]
+    if(desc?.extract)
+    {
+    blocks= desc.extract.match(/(.|\n){200,800}(\. |\.\n|\.$)/gs)
+    console.log(blocks)
+    result.blocks=blocks
+    result.total_block=result.blocks.length
+ }
+ return result
+}
+
+module.exports={
+    createBlock
+}
     // const trans_block=[]
 //     const properLength=(str_arr,sign,temp=[])=>{
 //         if(sign==="lte")
@@ -40,14 +53,7 @@ const createBlock=(data,result)=>{
 //             }
 //         }
 //     }
-    if(desc?.extract)
-       {
-       blocks= desc.extract.match(/(.|\n){200,800}(\. |\.\n|\.$)/gs)
-       console.log(blocks)
-       result.blocks=blocks
-       result.total_block=result.blocks.length
-       return result
-
+   
     //    const prop_block=str_arr[i]
 
     //    console.log(blocks_arr)
@@ -98,10 +104,5 @@ const createBlock=(data,result)=>{
         
     //     result.blocks=blocks
     //     result.total_block=result.blocks.length
-       }
-    return result
-}
+  
 
-module.exports={
-    createBlock
-}
