@@ -35,17 +35,15 @@ exports.revenueInfo=async (req, res, next) => {
     const platform_fee=calculatePlatformFee(Number(productCost),platform,subscription)
     const total_merchant_cost=Number(productCost)+Number(shippingCost)+platform_fee
     const price=Number(productCost)+Number(shippingCost)
-    console.log(total_customer_cost)
-    console.log(total_merchant_cost)
     const estimatedProfit=Number(total_customer_cost)-Number(total_merchant_cost)
-    const estimatedMargin=Number((estimatedProfit/total_customer_cost)*100).toFixed(2)
+    const estimatedMargin=Number(estimatedProfit/total_customer_cost)*100
     const totalFee=platform_fee
     const info={
-      price:price,
-      totalCost:total_merchant_cost,
-      totalFee:totalFee,
-      estimatedProfit:estimatedProfit,
-      estimatedMargin:estimatedMargin
+      price:price.toFixed(2),
+      totalCost:total_merchant_cost.toFixed(2),
+      totalFee:totalFee.toFixed(2),
+      estimatedProfit:estimatedProfit.toFixed(2),
+      estimatedMargin:estimatedMargin.toFixed(2)
     }
     return res.json(info)
 
