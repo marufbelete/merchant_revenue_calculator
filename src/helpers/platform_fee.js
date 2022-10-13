@@ -82,7 +82,7 @@ const calculatePlatformFee=(productCost,platform,subscription=null)=>{
                 }
                 if(String(subscription).toLocaleLowerCase()==SUBSCRPTIONMODEL.BIGCOMMERCE.SUBSCRIPTION.PROAMOUNT)
                 {
-                    const platform_cost=FEEMODEL.BIGCOMMERCE.PROAMOUNT+Number(FEEMODEL.BIGCOMMERCE.PROAMOUNT*productCost)
+                    const platform_cost=FEEMODEL.BIGCOMMERCE.PROAMOUNT+Number(FEEMODEL.BIGCOMMERCE.PROPERCENT*productCost)
                     return platform_cost 
                 }
                 if(String(subscription).toLocaleLowerCase()==SUBSCRPTIONMODEL.BIGCOMMERCE.SUBSCRIPTION.PLUSAMOUNT)
@@ -111,7 +111,7 @@ const calculatePlatformFee=(productCost,platform,subscription=null)=>{
                 }
                 if(String(subscription).toLocaleLowerCase()==SUBSCRPTIONMODEL.SQUARESPACE.SUBSCRIPTION.BUSINESS)
                 {
-                    const platform_cost=Number(FEEMODEL.SQUARESPACE.BASICFEEERCENT*productCost)
+                    const platform_cost=Number(FEEMODEL.SQUARESPACE.BUSINESSFEEPERCENT*productCost)
                     return platform_cost
                 }
                 if(String(subscription).toLocaleLowerCase()==SUBSCRPTIONMODEL.SQUARESPACE.SUBSCRIPTION.ADVANCED)
@@ -136,7 +136,7 @@ const calculatePlatformFee=(productCost,platform,subscription=null)=>{
                 }
                 if(String(subscription).toLocaleLowerCase()==SUBSCRPTIONMODEL.FASTSPRING.SUBSCRIPTION.OPTION2)
                 {
-                    const platform_cost=FEEMODEL.FASTSPRING.OPTION2AMOUNT+Number(FEEMODEL.FASTSPRING.OPTION1PERCENT*productCost)
+                    const platform_cost=FEEMODEL.FASTSPRING.OPTION2AMOUNT+Number(FEEMODEL.FASTSPRING.OPTION2PERCENT*productCost)
                     return platform_cost
                 }
                 else{
@@ -154,7 +154,7 @@ const calculatePlatformFee=(productCost,platform,subscription=null)=>{
                     const platform_cost=FEEMODEL.BIGCARTEL.PAYPALAMOUNT+Number(FEEMODEL.BIGCARTEL.PAYPALPERCENT*productCost)
                     return platform_cost
                 }
-                if(String(subscription).toLocaleLowerCase()==SUBSCRPTIONMODEL.BIGCARTEL.SUBSCRIPTION.STRIP)
+                if(String(subscription).toLocaleLowerCase()==SUBSCRPTIONMODEL.BIGCARTEL.SUBSCRIPTION.STRIPE)
                 {
                     const platform_cost=FEEMODEL.BIGCARTEL.STRIPEAMOUNT+Number(FEEMODEL.BIGCARTEL.STRIPEPERCENT*productCost)
                     return platform_cost

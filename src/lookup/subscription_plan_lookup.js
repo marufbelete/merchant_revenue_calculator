@@ -19,7 +19,7 @@ const SUBSCRPTIONMODEL={
         STANDARD:"standard",
         PLUSAMOUNT:"plus",
         PROAMOUNT:"pro",
-        ENTERPRISEAMOUNT:"erprise"
+        ENTERPRISEAMOUNT:"enrprise"
     }
 },
 
@@ -44,7 +44,7 @@ const SUBSCRPTIONMODEL={
     BIGCARTEL:{
         PLATFORM:"bigcartel",
         SUBSCRIPTION:{
-        STRIP:"stripe",
+        STRIPE:"stripe",
         PAYPAL:"paypal"
         } 
     },
