@@ -45,7 +45,7 @@ exports.revenueInfo=async (req, res, next) => {
       estimatedProfit:estimatedProfit.toFixed(2),
       estimatedMargin:estimatedMargin.toFixed(2)
     }
-    return res.json(info)
+    return res.json({message:"changed"})
 
   }
 catch(error) {
