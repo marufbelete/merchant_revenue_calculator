@@ -12,6 +12,9 @@ const cors = require('cors');
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public')); 
 app.use(location_test)
+app.use('/',async(req,res,next)=>{
+  res.json({message:"working well"})
+})
 app.listen(process.env.PORT || 7000,()=>{
   console.log(`connected on port ${process.env.PORT}`)
 })
